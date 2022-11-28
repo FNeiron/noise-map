@@ -1,24 +1,27 @@
 function init() {
-    var data = ymaps.geoXml.load("https://raw.githubusercontent.com/FNeiron/map-noise/e932336062558228cd92b215dad834c1779b0430/data.kml?token=GHSAT0AAAAAAB3HMHI45SDMF5QHAQDEGATQY4ERLQQ");
-    let map = new ymaps.Map('map', {
+    var map = new ymaps.Map('map', {
         center: [53.23668610165901,50.203182910530764],
         zoom: 15
-    })
+    }),
+    circle = new ymaps.Circle([[53.23668610165901,50.203182910530764], 100], null, { draggable: true });
+    
+    map.geoObjects.forEach(element => {
+        console.log(element.type);
+    });
 
-    data.then(function(res) {
+    circle.events.add('drag', function () {
+        var objectsInsideCircle = ymaps.geoQuery().searchIntersect(circle);
+        objectsInsideCircle.setOptions({fillColor: '#000000'});
+        // Оставшиеся объекты - синими.
+        //objects.remove(objectsInsideCircle).setOptions({fillColor: '#ffffff'});
+    });
+    map.geoObjects.add(circle);
+
+    var data = ymaps.geoXml.load("https://gitcdn.link/cdn/FNeiron/noise-map/main/data.kml?token=GHSAT0AAAAAAB3HMHI437HKDFCKPCNMQRY6Y4ERYUQ");
+        data.then(function(res) {
         // Добавление объектов на карту.
         map.geoObjects.add(res.geoObjects);
     });
-
-    circle = new ymaps.Circle([[53.23668610165901,50.203182910530764], 100], null, { draggable: true });
-    circle.events.add('drag', function () {
-        // Объекты, попадающие в круг, будут становиться красными.
-        var objectsInsideCircle = objects.searchIntersect(circle);
-        objectsInsideCircle.setOptions({fillColor: '#ff001a'});
-        // Оставшиеся объекты - синими.
-        objects.remove(objectsInsideCircle).setOptions({fillColor: '#0081ff'});
-    });
-    map.geoObjects.add(circle);
 }
 
 ymaps.ready(init)
