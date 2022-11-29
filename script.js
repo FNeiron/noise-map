@@ -18,8 +18,10 @@ function init() {
         // if(object_road2.getLength() > 0) console.log("JOPA2");
         // if(object_road4.getLength() > 0) console.log("JOPA4");
         // if(object_road6.getLength() > 0) console.log("JOPA6");
-        console.log(object_ts.getLength()*10 + object_road2.getLength()*2 + object_road4.getLength()*4 +
-        object_road6.getLength()*6 + 5);
+        let noise_sum = object_ts.getLength()*10 + object_road2.getLength()*2 + object_road4.getLength()*4 +
+        object_road6.getLength()*6 + 5;
+        document.getElementById("noise").innerText = "Шум: " + noise_sum;
+        console.log(noise_sum);
     });
     map.geoObjects.add(circle);
     var data = ymaps.geoXml.load("https://gitcdn.link/cdn/FNeiron/noise-map/main/data.kml?token=GHSAT0AAAAAAB3HMHI437HKDFCKPCNMQRY6Y4ERYUQ");
