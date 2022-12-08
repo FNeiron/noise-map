@@ -14,20 +14,25 @@ function init() {
         var object_road6 = objectsInsideCircle.search('properties.description == "Дорога 6"');
         var object_road4 = objectsInsideCircle.search('properties.description == "Дорога 4"');
         var object_road2 = objectsInsideCircle.search('properties.description == "Дорога 2"');
-        // if(object_ts.getLength() > 0) console.log("JOPA");
-        // if(object_road2.getLength() > 0) console.log("JOPA2");
-        // if(object_road4.getLength() > 0) console.log("JOPA4");
-        // if(object_road6.getLength() > 0) console.log("JOPA6");
-        let noise_sum = object_ts.getLength()*10 + object_road2.getLength()*2 + object_road4.getLength()*4 +
-        object_road6.getLength()*6 + 5;
-        document.getElementById("noise").innerText = "Шум: " + noise_sum;
+        //let noise_sum = object_ts.getLength()*10 + object_road2.getLength()*2 + object_road4.getLength()*4 + object_road6.getLength()*6 + 5;
+        if (document.getElementById("mark").checked) map.geoObjects.options.set('opacity', '1');
+        else {map.geoObjects.options.set('opacity', '0'); circle.options.set('opacity', '0');}
+        let noise_sum = 0;
+        if (document.getElementById("night").checked)
+            noise_sum = 20 * Math.log10(10**(object_ts.getLength()*5.0/20)+10**(object_road6.getLength()*60./20)+
+            10**(object_road4.getLength()*55/20)+10**(object_road2.getLength()*50.3/20)+10**((36.8+Math.random()*1)/20));
+        else
+            noise_sum = 20 * Math.log10(10**(object_ts.getLength()*30.0/20)+10**(object_road6.getLength()*63.7/20)+
+            10**(object_road4.getLength()*61.5/20)+10**(object_road2.getLength()*57.3/20)+10**((49.0+Math.random()*10)/20));
+        document.getElementById("noise").innerText = "Шум: " + noise_sum.toFixed(3) + "dB";
         console.log(noise_sum);
     });
     map.geoObjects.add(circle);
-    var data = ymaps.geoXml.load(date);
+    var data = ymaps.geoXml.load('https://raw.githubusercontent.com/FNeiron/noise-map/feature/KSR_01-12-2022_23-32-49.kml?token=GHSAT0AAAAAAB3HMHI5IVNBQ24WUXU3NPOSY4R5UOQ');
         data.then(function(res) {
         // Добавление объектов на карту.
         map.geoObjects.add(res.geoObjects);
+        map.geoObjects.options.set('opacity', '0');
     });
 }
 
