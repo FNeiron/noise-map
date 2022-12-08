@@ -27,6 +27,15 @@ body{
     text-align: left;
     margin-top: 0%;
     font-family: "Comic Sans MS";
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#mark {
+    text-align: left;
+    margin-top: 0%;
+    font-family: "Comic Sans MS";
+    margin-left: 20px;
 }
 
 .headtext{
@@ -38,7 +47,7 @@ body{
 }
 
 .noise {
-    text-align: center;
+    text-align: left;
     position: relative;
     grid-column-start:3;
     grid-row: 3/3;

@@ -1,5 +1,5 @@
 var dataj = 'https://gitcdn.link/cdn/FNeiron/noise-map/feature/dataj.geojson?token=GHSAT0AAAAAAB3HMHI5BADBXZXOLXHKU62OY4ETUXA';
-
+var date = 'https://raw.githubusercontent.com/FNeiron/noise-map/feature/KSR_01-12-2022_23-32-49.kml?token=GHSAT0AAAAAAB3HMHI4NEWZEDSXVSXYZH2MY4RSAOQ'
 function init() {
     var map = new ymaps.Map('map', {
         center: [53.23668610165901,50.203182910530764],
@@ -24,7 +24,7 @@ function init() {
         console.log(noise_sum);
     });
     map.geoObjects.add(circle);
-    var data = ymaps.geoXml.load("https://gitcdn.link/cdn/FNeiron/noise-map/main/data.kml?token=GHSAT0AAAAAAB3HMHI437HKDFCKPCNMQRY6Y4ERYUQ");
+    var data = ymaps.geoXml.load(date);
         data.then(function(res) {
         // Добавление объектов на карту.
         map.geoObjects.add(res.geoObjects);
