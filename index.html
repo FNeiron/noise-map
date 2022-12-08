@@ -4,14 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>КСР по БЖД</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="map" class="map"></div>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=9bb59997-bb27-4feb-ba7d-ac4025b09417&lang=ru_RU">
-	</script>
-	<script src="script.js"></script>
-    <h4 id="noise">Шум: 0</h4>
+    <div id = "garden" class = "garden">
+        <div id = "headtext" class = "headtext">
+            КСР по уровню шума
+        </div>
+        <div id = "textbox" class = "textbox">
+            <body>
+                Нормативные документы по уровню шума <br>
+                <ul>
+                <li>ЗАЩИТА ОТ ШУМА <a href = "https://docs.cntd.ru/document/1200084097">СП 51.13330.2011</a><br>
+                </li>
+                <li>Контроль уровня шума на территории жилой застройки, в жилых и общественных зданиях и помещениях <a href = "https://www.garant.ru/products/ipo/prime/doc/403287707/">Методические указания МУК 4.3.3722-21</a><br>
+                </li>
+                <li>ГИГИЕНИЧЕСКИЕ НОРМАТИВЫ И ТРЕБОВАНИЯ К ОБЕСПЕЧЕНИЮ БЕЗОПАСНОСТИ И (ИЛИ) БЕЗВРЕДНОСТИ ДЛЯ ЧЕЛОВЕКА ФАКТОРОВ СРЕДЫ ОБИТАНИЯ <a href = "https://fsvps.gov.ru/sites/default/files/npa-files/2021/01/28/sanpin1.2.3685-21.pdf">СанПиН 1.2.3685-21</a>
+                </li>
+            </ul>
+            <img src ="bird.png" width=" 180px" height=" 180px">
+            </body>
+        </div> 
+        <div id="map" class="map"></div>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=9bb59997-bb27-4feb-ba7d-ac4025b09417&lang=ru_RU">
+        </script>
+        <script src="script.js"></script>
+        <div class = "noise">
+            <h4 id="noise">Шум: 0</h4> 
+            <input type="checkbox" id="night" name="night"> 
+            <label for="night">Определение шума ночью</label>
+        </div>
+    </div>
 </body>
 </html>
