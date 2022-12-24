@@ -30,7 +30,7 @@ function init() {
     
     document.getElementById('mark').addEventListener("click", function(){
         if (document.getElementById("mark").checked) map.geoObjects.options.set('opacity', '1');
-        else {map.geoObjects.options.set('opacity', '0'); circle.options.set('opacity', '0');}
+        else {map.geoObjects.options.set('opacity', '0'); circle.options.set('opacity', '1');}
     });
 
     document.getElementById('night').addEventListener("click", function(){
