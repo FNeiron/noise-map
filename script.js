@@ -40,6 +40,7 @@ function init() {
     circle.events.add('drag', function () {
         calculating_noise(map, circle);
     });
+    circle.options.set('zIndex', 1000)
     map.geoObjects.add(circle);
     var data = ymaps.geoXml.load('https://10store.ru/kkk.kml');
         data.then(function(res) {
