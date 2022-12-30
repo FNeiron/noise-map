@@ -227,6 +227,17 @@ function calculating_noise(map, circle) {
     console.log(noise_sum);
 }
 
+let editing = false;
+function set_radius(map, circle) {
+    
+    circle.geometry.setRadius(document.getElementById("radius").value)
+    
+    // editing = !editing;
+    // if (editing)
+    //     circle.editor.startEditing();
+    // else
+    //     circle.editor.stopEditing();
+}
 
 function init() {
     var map = new ymaps.Map('map', {
@@ -244,6 +255,10 @@ function init() {
 
     document.getElementById('night').addEventListener("click", function(){
         calculating_noise(map, circle);
+    });
+
+    document.getElementById('radius').addEventListener("click", function(){
+        set_radius(map, circle);
     });
 
     circle.events.add('drag', function () {

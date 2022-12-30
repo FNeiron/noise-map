@@ -36,6 +36,15 @@ body{
     margin-top: 0%;
     font-family: "Comic Sans MS";
     margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#radius {
+    width: 40px;
+    text-align: left;
+    margin-top: 0%;
+    font-family: "Comic Sans MS";
+    margin-left: 20px;
 }
 
 .headtext{
